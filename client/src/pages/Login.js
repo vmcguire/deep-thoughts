@@ -20,6 +20,7 @@ const Login = (props) => {
 
   // submit form
   const handleFormSubmit = async (event) => {
+    event.preventDefault();
     try {
       const { data } = await login({
         variables: { ...formState },
@@ -29,6 +30,11 @@ const Login = (props) => {
     } catch (e) {
       console.error(e);
     }
+    // clear form values
+    setFormState({
+      email: "",
+      password: "",
+    });
   };
 
   return (
